@@ -1537,4 +1537,98 @@ console.log(atTheOldToad5.getTotalPrice())
 
 
 
-console.log();
+console.log("-------Зміна об'єкта в масиві------------");
+
+// Зміна об'єкта в масиві
+
+
+
+// Ціла група завдань зводиться до зміни значення властивості певного об'єкта в масиві. Наприклад, зміна рейтингу книги. Пошук необхідного об'єкта в масиві виконується за унікальним значенням властивості, наприклад, за ім'ям книги.
+
+
+
+// const bookShelf = {
+//   books: [
+//     { title: "The Last Kingdom", rating: 8 },
+//     { title: "The Mist", rating: 6 },
+//   ],
+// 	changeRating(bookName, newRating) {
+// 	}
+// };
+
+
+
+// Метод changeRating очікує на назву книги, якій необхідно змінити рейтинг, і нове значення рейтингу, яке потрібно підмінити в об'єкті. Процес зміни властивостей об’єкта в масиві починається з таких кроків:
+
+
+
+// Перебір масиву об'єктів у циклі, наприклад for...of.
+// Додавання перевірки збігу значення властивості об'єкта на поточній ітерації і заданого значення.
+
+
+// const bookShelf = {
+//   books: [
+//     { title: "The Last Kingdom", rating: 8 },
+//     { title: "The Mist", rating: 6 },
+//   ],
+// 	changeRating(bookName, newRating) {
+// 		for(const book of this.books) {
+// 			if(book.title === bookName) {
+// 				// Знайшли необхідний об’єкт за назвою книги
+// 			}
+// 		}
+// 	}
+// };
+
+
+
+// При виконанні if ми можемо бути впевнені, що на даній ітерації в змінній book знаходиться посилання на необхідний нам об'єкт, оскільки об'єкти передаються за посиланнями. Тепер достатньо звернутися до властивості цього об'єкта і прирівняти йому нове значення.
+
+
+
+const bookShelf72 = {
+  books72: [
+    { title: "The Last Kingdom", rating: 8 },
+    { title: "The Mist", rating: 6 },
+  ],
+	changeRating(bookName, newRating) {
+		for(const book of this.books72) {
+			if(book.title === bookName) {
+				book.rating = newRating;
+        
+			}
+		}
+	}
+};
+bookShelf72.changeRating("The Mist", 9);
+bookShelf72.changeRating("The Last Kingdom", 4);
+console.log(bookShelf72.books72);
+
+// Після виклику методу changeRating властивість rating об'єкта з назвою, що збігається з bookName, буде оновлено на newRating.
+
+console.log("задачка");
+
+const atTheOldToad6 = {
+  potions: [
+    { name: "Speed potion", price: 460 },
+    { name: "Stone skin", price: 520 },
+  ],
+  getPotions() {
+    return this.potions;
+  },
+  updatePotionName(oldName, newName) {
+    for(const potion of this.potions) {
+      if(potion.name === oldName)
+        potion.name = newName;
+        
+    }
+  },
+};
+
+
+
+
+atTheOldToad6.updatePotionName("Stone skin", "Invisibility");
+console.log(atTheOldToad6.potions);
+atTheOldToad6.updatePotionName("Speed potion", "Polymorth");
+console.log(atTheOldToad6.potions);
