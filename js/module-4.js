@@ -1384,3 +1384,44 @@ console.log(bookShelf68.getBooks()); // ["The Last Kingdom", "The Mist", "Dream 
 // У функції getBooks(), this.books означає доступ до властивості books об'єкта bookShelf68. Коли ви викликаєте bookShelf68.getBooks(), this вказує на об'єкт bookShelf68, тому this.books повертає масив книг цього об'єкта.
 
 // У методі addBook(bookName), this.books.push(bookName) додає нову книгу до масиву books об'єкта bookShelf68. Тут також this вказує на об'єкт bookShelf68, що дозволяє змінювати його властивість books.
+
+console.log("задачка");
+
+// Об'єкт atTheOldToad має наступні властивості:
+
+// potions — масив рядків, з назвами зілль
+// getPotions() — метод, який повертає значення властивості potions
+// addPotion() — метод, який приймає параметр рядок з назвою зілля potionName
+// Зміни код методу addPotion(potionName) так, щоб він додавав зілля potionName в кінець масиву у властивості potions.
+
+// Оголошена змінна atTheOldToad
+// Значення змінної atTheOldToad - це об'єкт
+// Значення властивості potions - це масив ["Speed potion", "Stone skin"]
+// Значення властивості getPotions - це метод об'єкта
+// Значення властивості addPotion - це метод об'єкта
+
+
+const atTheOldToad4 = {
+  potions: ["Speed potion", "Stone skin"],
+  getPotions() {
+    return this.potions;
+  },
+  addPotion(potionName) {
+    this.potions.push(potionName);
+  },
+};
+
+console.log (atTheOldToad.getPotions());
+
+atTheOldToad.addPotion("Invisibility");
+
+console.log (atTheOldToad.getPotions());
+
+atTheOldToad.addPotion("Power potion")
+  
+console.log (atTheOldToad.getPotions());
+
+
+// Виклик методу atTheOldToad.getPotions() повертає поточне значення властивості potions
+// Після виклику методу atTheOldToad.addPotion("Invisibility"), у властивості potions буде масив ["Speed potion", "Stone skin", "Invisibility"]
+// Після виклику методу atTheOldToad.addPotion("Power potion"), у властивості potions буде масив ["Speed potion", "Stone skin", "Invisibility", "Power potion"]
