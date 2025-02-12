@@ -1425,3 +1425,81 @@ console.log (atTheOldToad.getPotions());
 // Виклик методу atTheOldToad.getPotions() повертає поточне значення властивості potions
 // Після виклику методу atTheOldToad.addPotion("Invisibility"), у властивості potions буде масив ["Speed potion", "Stone skin", "Invisibility"]
 // Після виклику методу atTheOldToad.addPotion("Power potion"), у властивості potions буде масив ["Speed potion", "Stone skin", "Invisibility", "Power potion"]
+
+
+console.log("// ---Масив об’єктів--- //");
+
+// ---Масив об’єктів--- //
+
+
+
+// Ти вже знаєш, що об'єкт дає змогу згрупувати характеристики сутності, наприклад, книги.
+// Тому найчастіше будемо працювати з масивом об'єктів. Для цього зберігатимемо у властивості books не рядки, а об'єкти з назвою книги та рейтингом, а в майбутньому, можливо, й іншими характеристиками.
+
+const bookShelf69 = {
+  books69: [
+		{ title: "The Last Kingdom", rating: 8 }, 
+		{ title: "The Mist", rating: 6 }
+	],
+	getBooks() {
+		return this.books69;
+	}
+};
+
+console.log(bookShelf69.books69);
+
+
+
+// Тепер метод getBooks повертатиме масив об'єктів. А метод addBook очікує в параметрі не рядок, а об'єкт книги і додає його в масив у властивості books.
+
+
+
+const bookShelf70 = {
+  books70: [
+		{ title: "The Last Kingdom", rating: 8 }, 
+		{ title: "The Mist", rating: 6 }
+	],
+  getBooks70() {
+    return this.books70;
+  },
+  addBook70(newBook) {
+    this.books70.push(newBook);
+  }
+};
+
+bookShelf70.addBook70({ title: "Dream Guardian", rating: 9 });
+
+console.log(bookShelf70.books70);
+
+// console.log(bookShelf70.books70); // [{"title": "The Last Kingdom", "rating": 8 }, {"title": "The Mist", "rating": 6}, {"title": "Dream Guardian", "rating": 9}]
+
+
+// При переборі масиву у властивості books треба пам'ятати, що це масив об'єктів.
+// Наприклад, додамо метод getAverageRating(), який повертатиме середній рейтинг книг. Для цього:
+
+
+
+// Оголосимо новий метод getAvarageRating в об'єкті.
+// Оголосимо змінну totalRating для зберігання загального рейтингу.
+// Переберемо масив книг за посиланням this.books у циклі for...of.
+// На кожній ітерації додамо до загального рейтингу - рейтинг книги.
+// Після завершення циклу повернемо результат ділення загального рейтингу на кількість книг.
+
+
+// const bookShelf = {
+//   books: [
+//     { title: "The Last Kingdom", rating: 8 },
+//     { title: "The Mist", rating: 6 },
+//   ],
+//   getAvarageRating() {
+//     let totalRating = 0;
+
+//     for (const book of this.books) {
+//       totalRating += book.rating;
+//     }
+
+//     return totalRating / this.books.length;
+//   },
+// };
+
+// bookShelf.getAvarageRating(); // 7
