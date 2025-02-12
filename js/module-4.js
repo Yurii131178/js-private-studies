@@ -1486,20 +1486,55 @@ console.log(bookShelf70.books70);
 // Після завершення циклу повернемо результат ділення загального рейтингу на кількість книг.
 
 
-// const bookShelf = {
-//   books: [
-//     { title: "The Last Kingdom", rating: 8 },
-//     { title: "The Mist", rating: 6 },
-//   ],
-//   getAvarageRating() {
-//     let totalRating = 0;
+const bookShelf71 = {
+  books71: [
+    { title: "The Last Kingdom", rating: 8 },
+    { title: "The Mist", rating: 6 },
+  ],
+  getAvarageRating() {
+    let totalRating = 0;
 
-//     for (const book of this.books) {
-//       totalRating += book.rating;
-//     }
+    for (const book of this.books71) {
+      totalRating += book.rating;
+    }
 
-//     return totalRating / this.books.length;
-//   },
-// };
+    return totalRating / this.books71.length;
+  },
+};
 
-// bookShelf.getAvarageRating(); // 7
+bookShelf71.getAvarageRating(); // 7
+
+console.log(bookShelf71.getAvarageRating());
+
+
+console.log("задачка");
+
+const atTheOldToad5 = {
+  potions: [
+    { name: "Speed potion", price: 460 },
+    { name: "Stone skin", price: 520 },
+  ],
+  getPotions() {
+    return this.potions;
+  },
+  addPotion(newPotion) {
+    this.potions.push(newPotion);
+  },
+  getTotalPrice() {
+    let totalPrice = 0;
+
+    for(const potion of this.potions) {
+      totalPrice += potion.price
+    }
+    return totalPrice;
+  },
+};
+atTheOldToad5.addPotion({ name: "Power potion", price: 270 });
+atTheOldToad5.addPotion({ name: "Invisibility", price: 620 });
+
+console.log(atTheOldToad5.getPotions())
+console.log(atTheOldToad5.getTotalPrice())
+
+
+
+console.log();
