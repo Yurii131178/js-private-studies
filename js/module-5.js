@@ -1866,8 +1866,286 @@ console.log(students3.toSorted()); // [ "Adrian", "Artemis", "Ganymede", "Jacob"
 const letters = ["b", "B", "a", "A", "c", "C"];
 
 console.log(letters.toSorted()); // ["A", "B", "C", "a", "b", "c"]
+
+console.log('=======Свій порядок сортування чисел=======');
+
+
+
+// Свій порядок сортування чисел
+// Для зазначення свого порядку сортування методу toSorted(compareFunction) потрібно передати колбек-функцію з двома параметрами.
+// Це функція порівняння (compare function), порядок сортування залежить від її результату. Метод toSorted() буде викликати її для двох довільних елементів.
+console.log('');
+
+array.toSorted((a, b) => {
+  // Callback function body
+});
+
+// a — перший елемент для порівняння.
+// b — другий елемент для порівняння.
+
+// Сортування за зростанням
+console.log('---------Сортування за зростанням------------');
+console.log('toSorted((a, b) => a - b);');
+
+// Якщо виклик compareFunction(a, b) повертає будь-яке негативне значення, тобто a менше b, сортування поставить a перед b.
+
+const scores2 = [61, 19, 74, 35, 92, 56];
+const ascendingScores2 = scores2.toSorted((a, b) => a - b);
+console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+
+console.log('---------Сортування за спаданням---------------');
+
+console.log('toSorted((a, b) => b - a)');
+// Сортування за спаданням
+
+// Якщо виклик compareFunction(a, b) повертає будь-яке позитивне значення, тобто b більше a, сортування поставить b перед a.
+
+const scores3 = [61, 19, 74, 35, 92, 56];
+const descendingScores = scores3.toSorted((a, b) => b - a);
+console.log(descendingScores); // [92, 74, 61, 56, 35, 19]
+
+
+
+// Якщо виклик compareFunction(a, b) поверне 0, сортування залишить a і b незмінними по відношенню один до одного, але відсортує їх по відношенню до всіх інших елементів.
+
+
+
+// Зверни увагу, що при сортуванні масиву чисел і передачі в метод toSorted() колбек-функції, числа вже не будуть приводитися до рядків, тобто їх сортування буде очікуваним і звичним.
+
 console.log('//--------------------------------//');
-console.log('Свій порядок сортування чисел');
+console.log('autocheck');
+
+// Змінна releaseDates - це масив чисел, років видання книг.
+
+// Онлайн бібліотеці необхідно відображати книги, відсортовані за датою видання, за їх зростанням або спаданням. Доповни код таким чином, щоб у змінній ascendingReleaseDates вийшла копія масиву releaseDates, відсортована за зростанням, а у змінній descendingReleaseDates - копія, відсортована за спаданням.
+
+const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+
+const ascendingReleaseDates = releaseDates.toSorted((a, b) => a - b);
+
+const descendingReleaseDates = releaseDates.toSorted((a, b) => b - a);
+
+console.log(ascendingReleaseDates);
+console.log(descendingReleaseDates);
+
+console.log('//================================//');
+
+console.log('============Свій порядок сортування рядків===============');
+console.log('');
+
+// Свій порядок сортування рядків
+
+// Для сортування рядків в алфавітному порядку, за зростанням або спаданням, використовується метод рядків localeCompare().
+
+// firstString.localeCompare(secondString)
+
+// Він викликається на рядку, який потрібно порівняти (firstString) з тим, що був переданий йому як аргумент (secondString).
+
+
+// Метод localeCompare() зручно використовувати для сортування рядків, оскільки метод toSorted() очікує такі самі значення від колбек-функції.
+
+
+const students4 = ["Jacob", "Artemis", "Solomon", "Adrian", "Kai", "Ganymede"];
+console.log('"a".localeCompare("b"); // -1 // Повертає негативне значення, якщо firstString повинен бути перед secondString');
+const inAlphabetOrder = students4.toSorted((a, b) => a.localeCompare(b));
+console.log(inAlphabetOrder); // [ "Adrian", "Artemis", "Ganymede", "Jacob", "Kai", "Solomon" ]
+console.log('');
+console.log('"b".localeCompare("a"); // 1  // Повертає позитивне значення, якщо firstString повинен бути після secondString');
+const inReversedOrder = students4.toSorted((a, b) => b.localeCompare(a));
+console.log(inReversedOrder); // [ "Solomon", "Kai", "Jacob", "Ganymede", "Artemis", "Adrian" ]
+console.log('');
+console.log('');
+console.log('"b".localeCompare("a"); // 0  // // Якщо рядки однакові, повертається нуль і їх послідовність по відношенню один до одного не змінюється');
+
+console.log('------------------------------------------------');
+console.log('//===============Сортування об`єктів====================//');
+
+// Сортування об'єктів
+
+// Під час роботи з масивом об'єктів сортування виконується за числовим або рядковим значенням певної властивості. Наприклад, у нас є група студентів з балами за тест. Необхідно відсортувати масив об'єктів за трьома різними сценаріями:
+
+// за зростанням кількості балів
+// за спаданням кількості балів
+// за ім'ям студента в алфавітному порядку
+
+const students5 = [
+  { name: "Mango", score: 83 },
+  { name: "Poly", score: 59 },
+  { name: "Ajax", score: 37 },
+  { name: "Kiwi", score: 94 },
+];
+
+console.log('/за зростанням кількості балів/');
+
+const inAscendingScoreOrder = students5.toSorted(
+  (firstStudent, secondStudent) => firstStudent.score - secondStudent.score
+);
+console.log(inAscendingScoreOrder);
+
+console.log('');
+
+console.log('/за спаданням кількості балів/');
+
+const inDescendingScoreOrder = students5.toSorted(
+  (firstStudent, secondStudent) => secondStudent.score - firstStudent.score
+);
+console.log(inDescendingScoreOrder);
+
+console.log('');
+
+console.log('за ім`ям студента в алфавітному порядку');
+
+
+const inAlphabeticalOrder = students5.toSorted((firstStudent, secondStudent) =>
+  firstStudent.name.localeCompare(secondStudent.name)
+);
+console.log(inAlphabetOrder);
+
+
+console.log('//==================================//');
+console.log('');
+
+console.log('//=====Ланцюжки методів=====//');
+// Ланцюжки методів
+
+
+
+// У нас є масив об'єктів з іменами, балами й відвідуваними предметами кожного студента.
+
+
+
+const students6 = [
+  { name: "Mango", score: 83, courses: ["mathematics", "physics"] },
+  { name: "Poly", score: 59, courses: ["science", "mathematics"] },
+  { name: "Ajax", score: 37, courses: ["physics", "biology"] },
+  { name: "Kiwi", score: 94, courses: ["literature", "science"] },
+];
+
+// Необхідно отримати масив їхніх імен, відсортованих за зростанням балів за тест.
+
+// Для цього:
+console.log('Відсортуємо масив методом toSorted(),');
+console.log('Після чого методом map() створимо масив значень властивості name з відсортованого масиву.');
+
+
+// Відсортуємо масив методом toSorted(),
+// Після чого методом map() створимо масив значень властивості name з відсортованого масиву.
+
+const sortedByAscendingScore = students.toSorted((a, b) => a.score - b.score);
+const names = sortedByAscendingScore.map(student => student.name);
+
+console.log(names); // ["Ajax", "Poly", "Mango", "Kiwi"]
+
+// Проблема в тому, що в нас з'являються проміжні змінні після кожної операції, крім фінальної. Змінна sortedByAscendingScore — зайва. Вона необхідна тільки для зберігання проміжного результату.
+console.log('з`являються проміжні змінні після кожної операції, крім фінальної.');
+console.log('озбутися таких «мертвих» змінних можна за допомогою групування викликів методів у ланцюжки. Кожний наступний метод буде виконуватися на основі результату роботи попереднього.');
+
+// Позбутися таких «мертвих» змінних можна за допомогою групування викликів методів у ланцюжки. Кожний наступний метод буде виконуватися на основі результату роботи попереднього.
+
+console.log('.toSorted((a, b) => a.score - b.score).map(student => student.name)');
+
+
+const names2 = students
+  .toSorted((a, b) => a.score - b.score)
+  .map(student => student.name);
+
+console.log(names); // ["Ajax", "Poly", "Mango", "Kiwi"]
+
+
+// На масиві викликаємо метод toSorted()
+// До результату роботи методу toSorted() застосовуємо метод map()
+// Змінній names присвоюється результат роботи методу map()
+
+console.log('Отримаємо масив унікальних відвідуваних предметів, відсортований за алфавітом.');
+
+// Отримаємо масив унікальних відвідуваних предметів, відсортований за алфавітом.
+
+console.log('На вихідному масиві викликаємо flatMap() і робимо розгладжений масив усіх курсів');
+console.log('До результату методу flatMap() застосовуємо метод filter() для фільтрації унікальних елементів');
+console.log('На результаті методу filter() викликаємо toSorted()');
+console.log('Змінній uniqueSortedCourses присвоюється результат роботи методу toSorted()');
+
+console.log('const uniqueSortedCourses = students6.flatMap(student => student.courses).filter((course, index, array) => array.indexOf(course) === index).toSorted((a, b) => a.localeCompare(b))');
+
+const uniqueSortedCourses = students6
+  .flatMap(student => student.courses)
+  .filter((course, index, array) => array.indexOf(course) === index)
+  .toSorted((a, b) => a.localeCompare(b));
+
+console.log(uniqueSortedCourses); // ["biology", "science", "literature", "mathematics", "physics"]
+
+
+
+// На вихідному масиві викликаємо flatMap() і робимо розгладжений масив усіх курсів
+// До результату методу flatMap() застосовуємо метод filter() для фільтрації унікальних елементів
+// На результаті методу filter() викликаємо toSorted()
+// Змінній uniqueSortedCourses присвоюється результат роботи методу toSorted()
+
+
+// Ланцюжок методів може бути довільної довжини, але зазвичай не більше 2-3 операцій.
+
+
+
+// По-перше, перебираючі методи використовуються для порівняно простих операцій над колекцією. По-друге, виклик кожного наступного методу — це додаткове перебирання масиву, що за великої кількості може позначитися на продуктивності.
+console.log('=============================================');
+
+console.log('checkout');
+console.log('Доповни код таким чином, щоб у змінній names вийшов масив імен авторів в алфавітному порядку, рейтинг книг яких більший за значення змінної MIN_BOOK_RATING. Використовуй ланцюжок методів.');
+
+console.log('');
+console.log('// Значення змінної names - це масив ["Bernard Cornwell", "Howard Lovecraft", "Robert Sheckley"]// Змінна names повинна формуватися за допомогою ланцюжка методів filter, map, toSorted, при цьому інші змінні не повинні оголошуватись');
+
+// Масив books містить масив об'єктів книг, кожен з яких містить властивості title, author, rating.
+
+// Доповни код таким чином, щоб у змінній names вийшов масив імен авторів в алфавітному порядку, рейтинг книг яких більший за значення змінної MIN_BOOK_RATING. Використовуй ланцюжок методів.
+
+// Оголошена змінна books
+// Значення змінної books - це вихідний масив об'єктів
+// Оголошена змінна MIN_BOOK_RATING
+// Значення змінної MIN_BOOK_RATING - це число 8
+// Оголошена змінна names
+// Значення змінної names - це масив ["Bernard Cornwell", "Howard Lovecraft", "Robert Sheckley"]
+// Змінна names повинна формуватися за допомогою ланцюжка методів filter, map, toSorted, при цьому інші змінні не повинні оголошуватись
+
+const books7 = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  {
+    title: "The Dreams in the Witch House",
+    author: "Howard Lovecraft",
+    rating: 8.67,
+  },
+];
+const MIN_BOOK_RATING = 8;
+
+const names3 = books7.filter(book => book.rating > MIN_BOOK_RATING).map(book => book.author).toSorted();
+
+console.log(names3);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
