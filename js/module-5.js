@@ -1197,3 +1197,677 @@ const getUsersWithAge = (users, minAge, maxAge) => users.filter(user => user.age
 
 console.log(getUsersWithAge(users, 20, 30)); // [{…}, {…}, {…}]
 
+console.log('//==============================================//');
+console.log('autocheck');
+
+// Масив books містить колекцію об'єктів книг, кожен з яких містить властивості title, author, rating.
+
+// Використовуючи метод find(), доповни код таким чином, щоб:
+
+// У змінній bookWithTitle утворився об'єкт книги, назва якої (властивість title) збігається зі значенням змінної BOOK_TITLE.
+// У змінній bookByAuthor утворився об'єкт книги, автор якої (властивість author) збігається зі значенням змінної AUTHOR.
+
+// Оголошена змінна books
+// Значення змінної books - це масив
+// Оголошена змінна BOOK_TITLE
+// Значення змінної BOOK_TITLE - це рядок "The Dream of a Ridiculous Man"
+// Оголошена змінна AUTHOR
+// Значення змінної AUTHOR - це рядок "Robert Sheckley"
+// Оголошена змінна bookWithTitle
+// Значення змінної bookWithTitle - це об'єкт книги з назвою "The Dream of a Ridiculous Man"
+// Оголошена змінна bookByAuthor
+// Значення змінної bookByAuthor - це об'єкт книги автора "Robert Sheckley"
+// Для перебирання масиву books використаний метод find()
+
+const books20 = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+];
+const BOOK_TITLE1 = "The Dream of a Ridiculous Man";
+const AUTHOR1 = "Robert Sheckley";
+
+const bookWithTitle = books20.find(book => book.title === BOOK_TITLE1);
+const bookByAuthor = books20.find(book => book.author === AUTHOR1);
+
+console.log(bookWithTitle);
+console.log(bookByAuthor);
+
+
+
+console.log('//==============================================//');
+console.log('autocheck');
+
+const users3 = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male"
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female"
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male"
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    gender: "female"
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    gender: "male"
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    gender: "male"
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    gender: "female"
+  }
+]
+
+const getUserWithEmail = (users3, email) => users.find(user => user.email === email);
+
+console.log(getUserWithEmail(users3, "moorehensley@indexia.com"));
+
+console.log(getUserWithEmail(users3, "nobody@indexia.com"));
+
+console.log('//=======Методи every, some і reduce=======//');
+
+// Методи every, some і reduce
+// Метод every()
+console.log('//======Метод every()======//');
+
+
+// Метод every(callback) перевіряє, чи задовольняють усі елементи умову колбек-функції.
+
+
+
+// array.every((element, index, array) => {
+//   // Тіло колбек-функції
+// });
+
+
+
+// Не змінює оригінальний масив
+// Поелементно перебирає оригінальний масив
+// Повертає true, якщо всі елементи масиву задовольняють умову
+// Повертає false, якщо хоча б один елемент масиву не задовольняє умову
+// Перебирання масиву припиняється, якщо колбек повертає false
+
+
+// Усі елементи більші або дорівнюють нулю? - так
+[1, 2, 3, 4, 5].every((value) => value >= 0); // true
+
+// Усі елементи більші або дорівнюють нулю? - ні
+[1, 2, 3, -10, 4, 5].every((value) => value >= 0); // false
+
+
+
+// Під час роботи з масивом об'єктів перевіряється значення якоїсь їхньої властивості. Наприклад, перебираючи масив об'єктів товарів, ми можемо перевірити, чи всі товари є в наявності.
+
+
+
+const products = [
+	{ name: "apple", quantity: 2 },
+	{ name: "orange", quantity: 5 },
+	{ name: "plum", quantity: 0 },
+];
+
+const hasEveryProduct = products.every(product => product.quantity > 0);
+console.log(hasEveryProduct); // false
+
+
+console.log('//==============================================//');
+console.log('autocheck');
+// Доповни функцію isEveryUserActive(users) таким чином, щоб вона перевіряла, чи всі користувачі зараз активні (властивість isActive) і повертала true або false.
+
+// Оголошена змінна isEveryUserActive
+// Змінній isEveryUserActive присвоєна стрілочна функція з параметром (users)
+// Для перебирання параметра users використовується метод every()
+// Виклик функції із зазначеним масивом користувачів повертає false
+
+[
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male"
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female"
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male"
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    eyeColor: "green",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+    isActive: true,
+    balance: 2278,
+    gender: "female"
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    gender: "male"
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    gender: "male"
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    gender: "female"
+  }
+]
+
+const isEveryUserActive = (users) => users.every(user => user.isActive);
+
+console.log(isEveryUserActive(users));
+
+
+console.log('//==========Метод reduce()===============//');
+// Метод reduce()
+
+
+
+// Метод reduce(callback, initialValue) використовується для послідовної обробки кожного елемента масиву із збереженням проміжного результату. Трохи складніший за інші методи для засвоєння, але результат вартий того.
+
+
+
+// array.reduce((previousValue, element, index, array) => {
+//   // Тіло колбек-функції
+// }, initialValue);
+
+
+
+// Не змінює оригінальний масив
+// Поелементно перебирає оригінальний масив
+// Повертає все, що завгодно (об’єкт, масив, рядок, число тощо)
+// Може замінити функціонал будь-якого іншого перебираючого методу масиву та навіть їх комбінацію
+
+
+// Метод reduce() очікує 2 параметри:
+
+
+
+// 1-й параметр (обов’язковий) — колбек-функція, яка "опрацьовує" кожен елемент масиву;
+
+// 2-й параметр (не обов’язковий) — initialValue початкове значення акумулятора.
+
+
+
+// Колбек-функція з параметра редьюса очікує в свою чергу чотири параметри. Ці параметри, так само як і в колбеках інших перебираючих методів масиву, можна не оголошувати, якщо вони вам не потрібні, але не можна порушувати їх послідовність:
+
+
+
+// 1-й параметр (previousValue) — це акумулятор, тобто проміжний результат. Значення, яке поверне колбек-функція на поточній ітерації, буде значенням цього параметра на наступній ітерації;
+
+// 2-й параметр — поточний елемент масиву;
+
+// 3-й параметр — індекс поточної ітерації;
+
+// 4-й параметр — посилання на вихідний масив.
+
+// Найлегше уявити його роботу на прикладі підрахунку суми елементів масиву.
+
+
+console.log('const total = [2, 7, 3].reduce((previousValue, number) => {return previousValue + number;}, 0);');
+
+const total = [2, 7, 3].reduce((previousValue, number) => {
+  return previousValue + number;
+}, 0);
+
+// console.log(total); // 12
+
+
+
+// Розгляньмо детальніше роботу редьюса у прикладі вище:
+
+
+
+// Початкове значення акумулятора 0
+// перша ітерація колбек-функції 0 + 2 поверне 2
+// друга ітерація колбек-функції 2 + 7 поверне 9
+// третя ітерація колбек-функції 9 + 3 поверне 12
+
+
+// Результатом коду вище буде 12.
+
+
+
+// Тобто метод reduce() використовується, коли необхідно взяти «багато» і привести до «одного». У повсякденних завданнях його застосування зводиться до роботи з числами.
+
+console.log('//==============================================//');
+console.log('autocheck');
+// Ігровому сервісу необхідний функціонал підрахунку середнього часу, проведеного в іграх, одним гравцем. У змінній players зберігається об'єкт, де ключ це ім'я гравця, а значення - його ігровий час. У змінній playtimes зберігається масив значень об'єкта players, тобто масив ігрового часу усіх гравців. Значенням змінної averagePlayTime буде середній час, проведений одним гравцем в іграх.
+
+// Доповни код таким чином, щоб у змінній totalPlayTime вийшов загальний ігровий час з масиву playtimes. Використовуй метод reduce().
+
+// Оголошена змінна players
+// Значення змінної players - це об'єкт гравців з ігровим часом кожного
+// Оголошена змінна playtimes
+// Значення змінної playtimes - це масив [1270, 468, 710, 244]
+// Оголошена змінна totalPlayTime
+// Значення змінної totalPlayTime - це число 2692
+// Для перебирання масиву playtimes використовується метод reduce()
+// Оголошена змінна averagePlayTime
+
+const players = {
+  mango: 1570,
+  poly: 468,
+  ajax: 710,
+  kiwi: 252
+};
+const playtimes = Object.values(players); // [1270, 468, 710, 244]
+
+const totalPlayTime = playtimes.reduce((total, time)=> total + time, 0);
+
+const averagePlayTime = totalPlayTime / playtimes.length;
+
+console.log(playtimes);
+console.log(totalPlayTime);
+console.log(averagePlayTime);
+
+console.log('/----------------------------------/');
+// Давай розберемося покроково, що тут відбувається.
+
+// 1. Створення об'єкта players
+// javascript
+// Copy
+// Edit
+// const players = {
+//   mango: 1270,
+//   poly: 468,
+//   ajax: 710,
+//   kiwi: 244,
+// };
+// Тут ми створюємо об'єкт players, де кожен ключ (ім'я гравця) містить значення – час гри в хвилинах.
+
+// 2. Отримання масиву значень
+// javascript
+// Copy
+// Edit
+// const playtimes = Object.values(players); // [1270, 468, 710, 244]
+// Функція Object.values(players) повертає масив усіх значень з об'єкта players, тобто часу гри кожного гравця.
+// Результат:
+
+// javascript
+// Copy
+// Edit
+// [1270, 468, 710, 244]
+// Це означає, що ми більше не працюємо з об'єктом, а маємо звичайний масив чисел.
+
+// 3. Обчислення загального часу гри
+// javascript
+// Copy
+// Edit
+// const totalPlayTime = playtimes.reduce((total, time) => total + time, 0);
+// Метод .reduce() використовується для зведення масиву до одного значення – у цьому випадку, суми всіх елементів.
+
+// Розбираємо, як працює .reduce((total, time) => total + time, 0):
+
+// total – це акумулятор, який накопичує суму.
+// time – це поточний елемент масиву (час гри кожного гравця).
+// 0 – початкове значення акумулятора (щоб сума починалася з нуля).
+// Як це працює покроково:
+
+// Початкове значення total = 0.
+// Додаємо перше число: 0 + 1270 = 1270.
+// Додаємо друге число: 1270 + 468 = 1738.
+// Додаємо третє число: 1738 + 710 = 2448.
+// Додаємо четверте число: 2448 + 244 = 2692.
+// Отже, totalPlayTime = 2692.
+
+// 4. Обчислення середнього часу гри
+// javascript
+// Copy
+// Edit
+// const averagePlayTime = totalPlayTime / playtimes.length;
+// Тут ми просто ділимо загальний час на кількість гравців:
+
+// javascript
+// Copy
+// Edit
+// 2692 / 4 = 673
+// 5. Вивід результату
+// javascript
+// Copy
+// Edit
+// console.log(averagePlayTime); // 673
+// Програма виведе 673, що є середнім часом гри всіх гравців.
+
+// Підсумок роботи коду
+// Отримуємо всі значення об'єкта у вигляді масиву.
+// Обчислюємо загальний час гри за допомогою reduce().
+// Знаходимо середній час гри, поділивши загальний час на кількість гравців.
+// Виводимо результат.
+
+
+console.log('//======Метод reduce() і масив об`єктів============/');
+// Метод reduce() і масив об'єктів
+
+// Під час роботи з масивом об'єктів виконується редукування за значенням певної властивості. Наприклад, у нас є масив студентів з балами за тест. Необхідно отримати середній бал.
+
+const students2= [
+  { name: "Mango", score: 83 },
+  { name: "Poly", score: 59 },
+  { name: "Ajax", score: 37 },
+  { name: "Kiwi", score: 94 },
+  { name: "Houston", score: 64 },
+];
+
+// // Назва акумулятора може бути довільною, це просто параметр функції
+const totalScore = students2.reduce((total, student) => {
+  return total + student.score;
+}, 0);
+
+const averageScore = totalScore / students2.length;
+
+console.log(averageScore);
+
+// У прикладі вище метод reduce() використовується для обчислення суми значень властивості score для всіх об'єктів масиву students.
+
+// Починаючи зі значення 0, колбек-функція обчислює суму значень властивості score для кожного об'єкта масиву students. Результат (сума) зберігається у змінній totalScore.
+
+// const averageScore обчислює середнє значення score для всіх об'єктів масиву students, шляхом ділення суми всіх балів на кількість студентів.
+
+console.log('//==============================================//');
+console.log('autocheck');
+
+// У змінній players зберігається масив об'єктів, кожен з яких має властивості name, playtime та gamesPlayed.
+
+// Нашому сервісу необхідно розрахувати середній час, проведений в одній грі для кожного гравця, і отримати загальну суму цих значень часу у змінній totalAveragePlaytimePerGame. Розрахувати час для кожного з гравців можна, розділивши його час (властивість playtime) на кількість ігор (властивість gamesPlayed).
+
+// Поради:
+
+// Використовуй метод reduce() для ітерації по масиву players та обчислення загальної суми середнього часу на одну гру.
+// Усередині колбек функції reduce(), поділи playtime гравця на gamesPlayed, щоб отримати середній час, витрачений на одну гру кожним гравцем.
+// Накопичуй результат у змінній acc і повертай його в кінці кожної ітерації.
+// Ініціалізуй параметр acc методу reduce() початковим значенням 0, щоб уникнути отримання NaN при виконанні обчислень.
+// В результаті змінна totalAveragePlaytimePerGame міститиме загальну суму середнього часу на одну гру для всіх гравців.
+// Оголошена змінна players
+// Значення змінної players - це масив об'єктів гравців
+// Оголошена змінна totalAveragePlaytimePerGame
+// Значення змінної totalAveragePlaytimePerGame - це число 1023
+// Для перебирання масиву players використовується метод reduce()
+
+const players3 = [
+  { name: "Mango", playtime: 1270, gamesPlayed: 4 },
+  { name: "Poly", playtime: 469, gamesPlayed: 2 },
+  { name: "Ajax", playtime: 690, gamesPlayed: 3 },
+  { name: "Kiwi", playtime: 241, gamesPlayed: 1 },
+];
+
+const totalAveragePlaytimePerGame = players3.reduce((acc,player) => {
+  return acc + player.playtime / player.gamesPlayed;
+}, 0);
+
+
+const realAveragetimePerPlayer = totalAveragePlaytimePerGame / players3.length;
+
+console.log(totalAveragePlaytimePerGame);
+console.log(realAveragetimePerPlayer);
+
+
+// Що робить цей код?
+// Маємо масив players, де кожен елемент – це об'єкт із:
+
+// name – ім'я гравця
+// playtime – загальний час гри гравця
+// gamesPlayed – кількість зіграних ігор
+// Використовуємо reduce() для обчислення загального середнього часу гри на одну гру для всіх гравців.
+
+// Як працює .reduce()?
+// javascript
+// Copy
+// Edit
+// const totalAveragePlaytimePerGame = players.reduce((acc, player) => {
+//   return acc + player.playtime / player.gamesPlayed;
+// }, 0);
+// acc – акумулятор, який накопичує суму середнього часу гри кожного гравця.
+// player.playtime / player.gamesPlayed – обчислює середній час гри для конкретного гравця.
+// 0 – початкове значення acc (щоб сума починалася з нуля).
+// Розрахунок покроково
+// Гравець	Заг. час (playtime)	К-сть ігор (gamesPlayed)	Середній час на гру (playtime / gamesPlayed)
+// Mango	1270	4	1270 / 4 = 317.5
+// Poly	469	2	469 / 2 = 234.5
+// Ajax	690	3	690 / 3 = 230
+// Kiwi	241	1	241 / 1 = 241
+// Далі, reduce() додає всі ці значення:
+
+// yaml
+// Copy
+// Edit
+// 317.5 + 234.5 + 230 + 241 = 1023
+// Тобто, totalAveragePlaytimePerGame = 1023.
+
+// Що цей код повертає?
+// totalAveragePlaytimePerGame – це сума середнього часу гри кожного гравця.
+
+// Якщо треба знайти середній час на гру для всіх гравців разом, треба ще поділити на кількість гравців:
+
+// javascript
+// Copy
+// Edit
+// const averagePlaytimePerGame = totalAveragePlaytimePerGame / players.length;
+// console.log(averagePlaytimePerGame); // Виведе 255.75
+// Висновки
+// Код правильно обчислює загальну суму середніх ігрових часів.
+// Якщо потрібно знайти справжнє середнє значення на гру серед усіх гравців, варто ще поділити на players.length.
+
+
+console.log('/=================================================/');
+
+
+const users5 = [
+    {
+        name: "Moore Hensley",
+        email: "moorehensley@indexia.com",
+        eyeColor: "blue",
+        friends: ["Sharron Pace"],
+        isActive: false,
+        balance: 2811,
+        gender: "male"
+    },
+    {
+        name: "Sharlene Bush",
+        email: "sharlenebush@tubesys.com",
+        eyeColor: "blue",
+        friends: ["Briana Decker", "Sharron Pace"],
+        isActive: true,
+        balance: 3821,
+        gender: "female"
+    },
+    {
+        name: "Ross Vazquez",
+        email: "rossvazquez@xinware.com",
+        eyeColor: "green",
+        friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+        isActive: false,
+        balance: 3793,
+        gender: "male"
+    },
+    {
+        name: "Elma Head",
+        email: "elmahead@omatom.com",
+        eyeColor: "green",
+        friends: ["Goldie Gentry", "Aisha Tran"],
+        isActive: true,
+        balance: 2278,
+        gender: "female"
+    },
+    {
+        name: "Carey Barr",
+        email: "careybarr@nurali.com",
+        eyeColor: "blue",
+        friends: ["Jordan Sampson", "Eddie Strong"],
+        isActive: true,
+        balance: 3951,
+        gender: "male"
+    },
+    {
+        name: "Blackburn Dotson",
+        email: "blackburndotson@furnigeer.com",
+        eyeColor: "brown",
+        friends: ["Jacklyn Lucas", "Linda Chapman"],
+        isActive: false,
+        balance: 1498,
+        gender: "male"
+    },
+    {
+        name: "Sheree Anthony",
+        email: "shereeanthony@kog.com",
+        eyeColor: "brown",
+        friends: ["Goldie Gentry", "Briana Decker"],
+        isActive: true,
+        balance: 2764,
+        gender: "female"
+    }
+];
+
+const calculateTotalBalance = users5.reduce((total, user) => {
+  return total + user.balance},0);
+
+console.log(calculateTotalBalance);
+console.log('//-------------------------------//');
+console.log('//===========Метод toSorted()=================//');
+
+// Метод toSorted
+// Метод toSorted()
+// Метод toSorted() сортує елементи масиву.
+array.toSorted();
+
+console.log('array.toSorted();');
+
+// Сортує вихідний масив
+// Повертає новий масив
+// За замовчуванням сортує за зростанням
+// Масив чисел
+// Розгляньмо приклад, де потрібно відсортувати масив scores.
+// Вихідний масив scores залишається незмінним. Новий масив ascendingScores містить масив чисел, що відсортований за зростанням.
+
+const scores = [61, 19, 74, 35, 92, 56];
+const ascendingScores = scores.toSorted();
+
+console.log(scores); // [61, 19, 74, 35, 92, 56]
+console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+
+
+
+// Оскільки за замовчуванням перед сортуванням метод toSorted() приводить усі елементи масиву до рядків, то фактично елементи сортуються як рядки, тобто на основі їхніх значень у таблиці Unicode. Стандартне сортування чисел виглядає незвично, коли ми думаємо про числа, але зрозуміло, якщо знати, що числа були перетворені на рядки.
+
+const scores1 = [27, 2, 41, 4, 7, 3, 75];
+console.log(scores1.toSorted()); // [2, 27, 3, 4, 41, 7, 75]
+
+// При такому сортуванні рядки порівнюються за символами зліва направо, тобто спочатку порівнюються рядки 2 і 27. Перший символ 2 у них однаковий, але рядок 2 містить лише 1 символ, тому він менший, ніж рядок 27, і йде першим.
+
+// Потім порівнюються рядки 27 і 3. Перший символ у рядку 3 більший за перший символ 2 у рядку 27, тому 3 йде після 27.
+
+// Способи задати власний порядок сортування розглянемо в наступному розділі.
+
+console.log('//====Масив рядків====//');
+
+// Масив рядків
+console.log('Масив рядків сортується за алфавітом.');
+
+
+// Масив рядків сортується за алфавітом.
+
+const students3 = ["Jacob", "Artemis", "Solomon", "Adrian", "Kai", "Ganymede"];
+
+console.log(students3.toSorted()); // [ "Adrian", "Artemis", "Ganymede", "Jacob", "Kai", "Solomon" ]
+
+// Водночас порядковий номер великих літер менший, ніж у малих.
+
+const letters = ["b", "B", "a", "A", "c", "C"];
+
+console.log(letters.toSorted()); // ["A", "B", "C", "a", "b", "c"]
+console.log('//--------------------------------//');
+console.log('Свій порядок сортування чисел');
+
+
+
