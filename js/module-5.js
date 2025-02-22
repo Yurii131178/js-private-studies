@@ -845,7 +845,439 @@ const getUserEmails = (users) => users.map(huuser => huuser.email);
 console.log(getUserEmails(users));
 
 console.log('Ти використовуєш users як параметр колбек-функції всередині map. Це може спричинити плутанину, оскільки параметр функції вже називається users. Більш коректний варіант:huuser - довільна назва, аби леше не збігалась з властивістю масиву');
-console.log('//============================================================//');
+console.log('//---------------------------------------------------------//');
+console.log('');
+console.log('//===== Діма Кістіцин====MODULE-5_LESSON_9=====//');
+console.log('');
+console.log('====== method-filter()=========');
+console.log('');
+// колбек функції //
+
+// console.log("callback function");
+
+// console.log("taska");
+
+// function calc(a, b, callback) {
+//   return callback(a, b);
+// }
+
+// function fnA(jojo, baba) {
+//   return jojo + baba;
+// }
+// console.log(calc(1, 5, fnA));
+
+// function fnB(jojo, baba) {
+//   return jojo - baba;
+// }
+// console.log(calc(10, 2, fnB));
+
+// function fnC(jojo, baba) {
+//   return jojo / baba;
+// }
+// console.log(calc(10, 2, fnC));
+
+// function fnD(jojo, baba) {
+//   return jojo * baba;
+// }
+// console.log(calc(10, 2, fnD));
+
+// console.log("//===========================//");
+
+// console.log("INLINE callback function");
+
+// // інлайн колбек функції //
+
+// function calc(a, b, callback) {
+//   return callback(a, b);
+// }
+
+// console.log(
+//   calc(1, 5, function (x, y) {
+//     return x + y;
+//   })
+// );
+
+// console.log(
+//   calc(10, 2, function (x, y) {
+//     return x - y;
+//   })
+// );
+
+// function each(array, callback) {
+//   const res = [];
+//   for (const item of array) {
+//     res.push(callback(item));
+//   }
+//   return res;
+// }
+
+// console.log(
+//   each([64, 49, 36, 25, 16], function (value) {
+//     return value * 2;
+//   })
+// );
+
+// console.log(
+//   each([64, 49, 36, 25, 16], function (value) {
+//     return value - 10;
+//   })
+// );
+
+// console.log(
+//   each([64, 49, 36, 25, 16], function (value) {
+//     return Math.sqrt(value);
+//   })
+// );
+
+// console.log("=>-----стрілочні функції / arrow functions-----=>");
+
+// function foo(a, b, c) {
+//   return a + b + c;
+// }
+
+// const arrowFoo = (a, b, c) => {
+//   return a + b + c;
+// };
+
+// console.log(foo(1, 2, 3));
+// console.log(arrowFoo(10, 20, 30));
+
+// console.log("//==псевдомасив arguments");
+
+// // в КБФ його немає!!!, тому, чкщо потрібно отримати довільну к-ть наших парметрів під час створення КБФ, ми можемо скоритсатись опретором ...rest
+
+// function foo1(a, b, c) {
+//   console.log(arguments);
+
+//   return a + b + c;
+// }
+
+// const arrowFoo1 = (...args) => {
+//   return args;
+// };
+
+// console.log(foo1(1, 2, 3)); // Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+// console.log(arrowFoo1(10, 20, 30)); // [10, 20, 30]
+
+// console.log("явне (explicit return) і неявне повернення(implicit return)");
+
+// const arrowFoo2 = (a, b) => a + b;
+
+// console.log(arrowFoo2(10, 20)); // 30
+
+// console.log("//=================================//");
+
+// console.log("випадки використання => функцій");
+
+// const calc1 = (a, b, callback) => {
+//   const result = callback(a, b);
+//   return result;
+// };
+
+// console.log(calc1(1, 2, (x, y) => x + y)); // 3
+// console.log(calc1(10, 3, (x, y) => x - y)); // 7
+
+// console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+// console.log("робимо функцію стрілочно (з неявним поверненням(без return))");
+
+// const calc2 = (a, b, callback) => {
+//   const result = callback(a, b);
+//   return result;
+// };
+// // => => => => => =>
+// // Щоб зробити функцію calc1 неявно повертаючою значення (implicit return), можна прибрати {} і return:
+// // Оновлений код з неявним поверненням:
+// const calc3 = (a, b, callback) => callback(a, b);
+
+// console.log(calc3(1, 2, (x, y) => x + y)); // 3
+// console.log(calc3(4, 3, (x, y) => x * y)); // 12
+
+// // Пояснення:
+// // Неявне повернення (implicit return):
+
+// // В оригінальному коді було return result;, що явно повертає значення.
+// // У стрілкових функціях, якщо тіло функції складається з одного виразу, можна не писати return і {}.
+// // Тому callback(a, b) автоматично повертається.
+// // Функція вищого порядку:
+
+// // calc1 приймає три параметри: a, b та callback (функцію з двома аргументами).
+// // Викликає callback(a, b), передаючи a і b, а потім повертає його результат.
+// // Таким чином, calc3 універсальна: можна передати будь-яку функцію, що працює з двома аргументами! 🚀
+
+// console.log("//============метод forEach===========//");
+
+// const arr = [5, 10, 15, 20, 25];
+
+// arr.forEach(function (number, index, array) {
+//   console.log(number, index, array);
+// });
+
+// // стрілочна функція
+
+// let total = 0;
+
+// arr.forEach((item) => {
+//   total += item;
+// });
+
+// console.log(total); // 75
+
+// console.log(
+//   "// Виконайте рефакторинг коду за допомогою методу forEach та стрілочні функції.//"
+// );
+
+// /**
+//  * Виконайте рефакторинг коду за допомогою методу forEach та стрілочні функції.
+//  */
+// // function printContactsInfo({ names, phones }) {
+// //   const namesArr = names.split(",");
+// //   const phonesArr = phones.split(",");
+// //   for (let i = 0; i < namesArr.length; i += 1) {
+// //     console.log(`${namesArr[i]}: ${phonesArr[i]}`);
+// //   }
+// // }
+
+// const printContactsInfo = (obj) => {
+//     const namesArr = obj.names.split(",");
+//     const phonesArr = obj.phones.split(",");
+    
+//     namesArr.forEach((item, index) => {
+//         console.log(`${item} - ${phonesArr[index]}`);
+//   });
+// };
+
+// printContactsInfo({
+//   names: "Jacob,William,Solomon,Artemis",
+//   phones: "89001234567,89001112233,890055566377,890055566300",
+// });
+// // Функція printContactsInfo приймає об'єкт з двома рядками: іменами та телефонами, розбиває їх на масиви та виводить кожне ім'я разом з відповідним телефоном.
+
+// // Розбиває рядки на масиви за допомогою .split(",").
+// // Використовує forEach, щоб пройтися по масиву імен та вивести відповідні пари ім'я - телефон.
+// // Приклад виконання:
+
+// // Jacob - 89001234567
+// // William - 89001112233
+// // Solomon - 890055566377
+// // Artemis - 890055566300
+// console.log('/=======================/');
+
+
+
+// console.log(' =====метод  map()==========');
+// console.log('Array.prototype.map()');
+// console.log('Поелементо перебирає оригінальний масив');
+// console.log('Не змінює оригінальний масив');
+// console.log('Повертає новий масив такої ж довжини');
+// console.log('');
+
+// console.log('taska');
+// console.log();
+
+
+
+// const allCars = [
+//     { make: "Honda", model: "CR-V", amount: 14, price: 24045 },
+//     { make: "Honda", model: "Accord", amount: 2, price: 22455 },
+//     { make: "Mazda", model: "Mazda 6", amount: 8, price: 24195 },
+//     { make: "Mazda", model: "CX-9", amount: 7, price: 31520 },
+//     { make: "Toyota", model: "4Runner", amount: 19, price: 34210 },
+//     { make: "Toyota", model: "Sequoia", amount: 16, price: 45560 },
+//     { make: "Toyota", model: "Tacoma", amount: 4, price: 24320 },
+//     { make: "Ford", model: "F-150", amount: 11, price: 27110 },
+//     { make: "Ford", model: "Fusion", amount: 13, price: 22120 },
+//     { make: "Ford", model: "Explorer", amount: 6, price: 31660 },
+// ];
+
+// console.log('===рішення методом forEach========');
+
+
+// const getModels = (cars) => {
+//     const res = [];
+
+//     cars.forEach((item) => {
+//         res.push(item.model);
+//     })
+//     return res;
+// }
+
+// console.log(getModels(allCars));
+
+
+// console.log('=== рішення методом map ========');
+
+// const getModels1 = cars => {
+//     const res = cars.map((item) => {
+//         return item.model;
+//     });
+//     return res;
+
+// }
+
+// console.log(getModels1(allCars));
+
+// console.log('оптимізація 1');
+
+// const getModels2 = cars => {
+//     const res = cars.map((item) => item.model);
+//     return res;
+// }
+
+// console.log(getModels2(allCars));
+
+// console.log('оптимізація 2');
+
+// const getModels3 = cars => {
+//     return cars.map((item) => item.model);
+// }
+// console.log(getModels3(allCars));
+
+// console.log('оптимізація 3');
+
+// const getModels4 = cars => cars.map(item => item.model);
+
+// console.log(getModels4(allCars));
+
+
+
+// console.log('повернемо марки авто(make)');
+
+// const getModels5 = cars => {
+//     return cars.map((item) => item.make);
+// }
+// console.log(getModels5(allCars));
+
+// console.log('повернемо кількість авто(amount)');
+
+// const getModels6 = cars => {
+//     return cars.map((item) => item.amount);
+// }
+// console.log(getModels6(allCars));
+
+// console.log('//======== console.table )) ===============//');
+// console.log('Нехай функція makeCarsWithDiscount повертає новий масив об`єктів із змінним значенням властивості price залежно від переданої знижки.');
+
+
+// /**
+//  *
+//  */
+
+// const makeCarsWithDiscount = (cars, discount) => {
+//     return cars.map((item) => {
+//         return {...item,
+//             price: item.price * (1 - discount)
+//         }
+//     })
+// }
+// console.table(makeCarsWithDiscount(allCars, 0.2));
+// console.log('');
+
+// console.log('оптимізація');
+
+
+// const makeCarsWithDiscount1 = (cars, discount) => {
+//     return cars.map((item) => ({
+//         ...item,
+//             price: item.price * (1 - discount)
+//     }))
+// }
+// console.table(makeCarsWithDiscount1(allCars, 0.5));
+// console.log('');
+
+// console.log('//===============================//');
+// console.log('');
+// console.log('taska');
+// console.log('');
+
+
+
+// const players = [
+//     { id: "player-1", name: "Mango", timePlayed: 310, points: 54, online: false },
+//     { id: "player-2", name: "Poly", timePlayed: 470, points: 92, online: true },
+//     { id: "player-3", name: "Kiwi", timePlayed: 230, points: 48, online: true },
+//     { id: "player-4", name: "Ajax", timePlayed: 150, points: 71, online: false },
+//     { id: "player-5", name: "Chelsy", timePlayed: 80, points: 48, online: true },
+// ];
+
+
+
+
+// /*
+//  * Збільшуємо кількість годин гравця за id
+//  */
+
+// const playerIdToUpdate = "player-3";
+
+// const newArr = players.map((player) => {
+//     if (player.id === playerIdToUpdate) {
+//         return {
+//             ...player,
+//             timePlayed: player.timePlayed + 100
+//         }
+        
+//     }
+//     return player;
+// })
+
+// console.table(newArr);
+
+// console.log('');
+// console.log('перетовримо змінну у функцію)');
+// console.log('');
+
+// const update = (players, playerId) => {
+//     return players.map((player) => {
+//     if (player.id === playerId) {
+//         return {
+//             ...player,
+//             timePlayed: player.timePlayed + 100
+//         }
+//     }
+//     return player;
+// })
+// }
+
+// console.table(update(players, playerIdToUpdate));
+
+// console.log('');
+
+// console.log(' =====метод  flatMap()==========');
+// console.log('розгортає масив масивів і повертає кожне значення в новий масив');
+// console.log('');
+
+// console.log('map');
+
+// const tweets = [
+//     { id: "001", likes: "10", tags: ["qu", "qo", "qi", "qa"] },
+//     { id: "002", likes: "12", tags: ["qs", "qr", "qis", "qao"] },
+//     { id: "003", likes: "14", tags: ["qu", "qa"] },
+//     { id: "004", likes: "20", tags: ["qu", "qo"] },
+//     { id: "005", likes: "100", tags: ["qu"] },
+
+// ];
+
+// const tags = tweets.map(item => item.tags);
+// console.log(tags); // (5) [Array(4), Array(4), Array(2), Array(2), Array(1)]
+
+// console.log('');
+
+// console.log('flatMap');
+// const tweets1 = [
+//     { id: "001", likes: "10", tags: ["qu", "qo", "qi", "qa"] },
+//     { id: "002", likes: "12", tags: ["qs", "qr", "qis", "qao"] },
+//     { id: "003", likes: "14", tags: ["qu", "qa"] },
+//     { id: "004", likes: "20", tags: ["qu", "qo"] },
+//     { id: "005", likes: "100", tags: ["qu"] },
+// ];
+// const tags1 = tweets.flatMap(item => item.tags);
+// console.log(tags1); // (13)['qu', 'qo', 'qi', 'qa', 'qs', 'qr', 'qis', 'qao', 'qu', 'qa', 'qu', 'qo', 'qu']
+
+console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+console.log('');
+console.log('//===== =MODULE-5_LESSON_9=====КІНЕЦЬ УРОКУ=====//');
+console.log('');
+console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+
 // Методи filter і find
 // Метод filter()
 console.log('//====================Методи filter і find=================//');
@@ -903,9 +1335,9 @@ const numbers = [17, 24, 82, 61, 36, 18, 47, 52, 73];
 const evenNumbers = numbers.filter(number => number % 2 === 0);
 const oddNumbers = numbers.filter(number => number % 2 !==0);
 
-console.log(numbers); // original array
-console.log(evenNumbers); // new array with even numbers // numbers.filter(number => number % 2 === 0);
-console.log(oddNumbers); // new array with add numbers // numbers.filter(number => number % 2 !==0);
+console.log(numbers); // original array // [17, 24, 82, 61, 36, 18, 47, 52, 73]
+console.log(evenNumbers); // new array with even numbers // numbers.filter(number => number % 2 === 0);// [24, 82, 36, 18, 52]
+console.log(oddNumbers); // new array with add numbers // numbers.filter(number => number % 2 !==0);// [17, 61, 47, 73]
 
 console.log('//=====================================================//');
 
@@ -920,8 +1352,6 @@ console.log('Метод filter() на масиві об`єктів');
 
 
 // Розгляньмо приклад, де є масив студентів з балами за тест. Необхідно відфільтрувати студентів, які мають:
-
-
 
 // високі бали (від 80 (включно)),
 // низькі бали (нижче 50),
@@ -1005,8 +1435,8 @@ const AUTHOR = "Bernard Cornwell";
 const topRatedBooks = books19.filter(book => book.rating >= MIN_RATING);
 const booksByAuthor = books19.filter(book => book.author === AUTHOR);
 
-console.log(topRatedBooks);
-console.log(booksByAuthor);
+console.log(topRatedBooks);// {title: 'The Last Kingdom', author: 'Bernard Cornwell', rating: 8.38}, {title: 'Beside Still Waters', author: 'Robert Sheckley', rating: 8.51}, {title: 'Enemy of God', author: 'Bernard Cornwell', rating: 8.67} //
+console.log(booksByAuthor); // {title: 'The Last Kingdom', author: 'Bernard Cornwell', rating: 8.38}, {title: 'Enemy of God', author: 'Bernard Cornwell', rating: 8.67} //
 
 console.log('//====================================================//');
 
@@ -1093,11 +1523,71 @@ console.log('autocheck');
 
 const getUsersWithEyeColor = (users, color) => users.filter(user => user.eyeColor === color);
 
-console.log(getUsersWithEyeColor(users, "blue"));
-console.log(getUsersWithEyeColor(users, "green"));
-console.log(getUsersWithEyeColor(users, "black"));
+console.log(getUsersWithEyeColor(users, "blue")); //{eyeColor: 'blue',  …}, {eyeColor: 'blue',  …}, {eyeColor: 'blue', …}// 
+console.log(getUsersWithEyeColor(users, "green"));// [{…}, {…}]
+console.log(getUsersWithEyeColor(users, "black"));// []
 
 console.log('//================================================//');
+
+const cars = [
+  { make: "Honda", model: "CR-V", type: "suv", amount: 14, price: 24045, onSale: true},
+  { make: "Honda", model: "Accord", type: "sedan", amount: 2, price: 22455, onSale: true },
+  { make: "Mazda", model: "Mazda 6", type: "sedan", amount: 8, price: 24195, onSale: false },
+  { make: "Mazda", model: "CX-9", type: "suv", amount: 7, price: 31520, onSale: true },
+  { make: "Toyota", model: "4Runner", type: "suv", amount: 19, price: 34210, onSale: false },
+  { make: "Toyota", model: "Sequoia", type: "suv", amount: 16, price: 45560, onSale: false },
+  { make: "Toyota", model: "Tacoma", type: "truck", amount: 4, price: 24320, onSale: true },
+  { make: "Ford", model: "F-150", type: "truck", amount: 11, price: 27110, onSale: true },
+  { make: "Ford", model: "Fusion", type: "sedan", amount: 13, price: 22120, onSale: true },
+  { make: "Ford", model: "Explorer", type: "suv", amount: 6, price: 31660, onSale: false }
+];
+
+console.table(cars);
+
+
+const getByModel = (arr, model) => {
+  return arr.find((car) => car.model === model);
+}
+
+const getByType = (cars, type) => {
+    return cars.find((car) => car.type === type);
+}
+
+const getByMake = (auto, make) => {
+    return auto.find((auto) => auto.make === make);
+}
+
+console.table(getByModel(cars, "Explorer"));
+console.table(getByType(cars, "suv"));
+console.table(getByMake(cars, "Toyota"));
+
+console.log('====застосовуємо====метод====every()=====');
+
+
+const isOnSale = cars.every(item => item.onSale === true);
+console.log(isOnSale); // false
+
+const isType = cars.every(tachka => tachka.sedan === true);
+console.log(isType);
+
+
+const hasPriceOver22000Usd = cars.every(autos => autos.price > 22000);
+console.log(hasPriceOver22000Usd);
+
+const hasPriceOver25000Usd = cars.every(autos => autos.price > 25000);
+console.log(hasPriceOver25000Usd);
+
+console.log('====застосовуємо====метод====some()=====');
+
+const isOnSale1 = cars.some(item => item.onSale);
+console.log(isOnSale1);// true
+
+const carMake = cars.some(coryto => coryto.make === "Wolksvagen");
+console.log(carMake);//false
+
+const carMake1 = cars.some(coryto => coryto.make === "Mazda");
+console.log(carMake1);//true
+
 
 console.log('//====================================================//');
 
@@ -1197,7 +1687,7 @@ const getUsersWithAge = (users, minAge, maxAge) => users.filter(user => user.age
 
 console.log(getUsersWithAge(users, 20, 30)); // [{…}, {…}, {…}]
 
-console.log('//==============================================//');
+console.log('//============метод find() ==================================//');
 console.log('autocheck');
 
 // Масив books містить колекцію об'єктів книг, кожен з яких містить властивості title, author, rating.
@@ -1446,7 +1936,7 @@ console.log('autocheck');
 
 const isEveryUserActive = (users) => users.every(user => user.isActive);
 
-console.log(isEveryUserActive(users));
+console.log(isEveryUserActive(users)); 
 
 
 console.log('//==========Метод reduce()===============//');
@@ -1500,6 +1990,11 @@ console.log('const total = [2, 7, 3].reduce((previousValue, number) => {return p
 const total = [2, 7, 3].reduce((previousValue, number) => {
   return previousValue + number;
 }, 0);
+
+  
+
+console.log(total); // 12
+
 
 // console.log(total); // 12
 
@@ -1980,7 +2475,7 @@ console.log('/за зростанням кількості балів/');
 const inAscendingScoreOrder = students5.toSorted(
   (firstStudent, secondStudent) => firstStudent.score - secondStudent.score
 );
-console.log(inAscendingScoreOrder);
+console.table(inAscendingScoreOrder);
 
 console.log('');
 
@@ -1989,7 +2484,7 @@ console.log('/за спаданням кількості балів/');
 const inDescendingScoreOrder = students5.toSorted(
   (firstStudent, secondStudent) => secondStudent.score - firstStudent.score
 );
-console.log(inDescendingScoreOrder);
+console.table(inDescendingScoreOrder);
 
 console.log('');
 
@@ -2034,7 +2529,7 @@ console.log('Після чого методом map() створимо маси�
 const sortedByAscendingScore = students.toSorted((a, b) => a.score - b.score);
 const names = sortedByAscendingScore.map(student => student.name);
 
-console.log(names); // ["Ajax", "Poly", "Mango", "Kiwi"]
+console.table(names); // ["Ajax", "Poly", "Mango", "Kiwi"]
 
 // Проблема в тому, що в нас з'являються проміжні змінні після кожної операції, крім фінальної. Змінна sortedByAscendingScore — зайва. Вона необхідна тільки для зберігання проміжного результату.
 console.log('з`являються проміжні змінні після кожної операції, крім фінальної.');
@@ -2049,7 +2544,7 @@ const names2 = students
   .toSorted((a, b) => a.score - b.score)
   .map(student => student.name);
 
-console.log(names); // ["Ajax", "Poly", "Mango", "Kiwi"]
+console.table(names); // ["Ajax", "Poly", "Mango", "Kiwi"]
 
 
 // На масиві викликаємо метод toSorted()
@@ -2140,6 +2635,178 @@ console.log(names3);
 
 
 
+console.log('///////////////////////////////////////////////////////////////');
+console.log('<<<<<<<<<<<<<<<<<<урок 10>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+
+console.log("===============method reduce===========");
+
+/**
+ * Рахуємо загальну кількість годин
+ */
+
+const players4= [
+  { id: "player-1", name: "Mango", timePlayed: 310, online: false },
+  { id: "player-2", name: "Poly", timePlayed: 470, online: true },
+  { id: "player-3", name: "Kiwi", timePlayed: 230, online: true },
+  { id: "player-4", name: "Ajax", timePlayed: 150, online: false },
+  { id: "player-5", name: "Chelsey", timePlayed: 80, online: true },
+];
+
+const result = players4.reduce((acc, player) => acc + player.timePlayed, 0);
+
+console.log(result);
+
+const playersId = players4.reduce((acc, player) => acc + player.id + ",", "");
+console.log(playersId.slice(0, -1));
+
+console.log("============================================");
+console.log("");
+
+console.log("============toSorted=====================");
+
+const players1 = [
+  { id: "player-1", name: "Mango", timePlayed: 310, online: false },
+  { id: "player-2", name: "Poly", timePlayed: 470, online: true },
+  { id: "player-3", name: "Kiwi", timePlayed: 230, online: true },
+  { id: "player-4", name: "Ajax", timePlayed: 150, online: false },
+  { id: "player-5", name: "Chelsey", timePlayed: 80, online: true },
+];
+
+const res = players1.toSorted((a, b) => a.timePlayed - b.timePlayed);
+
+console.table(res);
+
+
+console.log("============================================");
+console.log("============================================");
+console.log("");
+
+/**
+ * -------------------------------------
+ */
+const cars3 = [
+  {
+    make: "Honda",
+    model: "CR-V",
+    type: "suv",
+    amount: 14,
+    price: 24045,
+    onSale: true,
+  },
+  {
+    make: "Honda",
+    model: "Accord",
+    type: "sedan",
+    amount: 2,
+    price: 22455,
+    onSale: true,
+  },
+  {
+    make: "Mazda",
+    model: "Mazda 6",
+    type: "sedan",
+    amount: 8,
+    price: 24195,
+    onSale: false,
+  },
+  {
+    make: "Mazda",
+    model: "CX-9",
+    type: "suv",
+    amount: 7,
+    price: 31520,
+    onSale: true,
+  },
+  {
+    make: "Toyota",
+    model: "4Runner",
+    type: "suv",
+    amount: 19,
+    price: 34210,
+    onSale: false,
+  },
+  {
+    make: "Toyota",
+    model: "Sequoia",
+    type: "suv",
+    amount: 16,
+    price: 45560,
+    onSale: false,
+  },
+  {
+    make: "Toyota",
+    model: "Tacoma",
+    type: "truck",
+    amount: 4,
+    price: 24320,
+    onSale: true,
+  },
+  {
+    make: "Ford",
+    model: "F-150",
+    type: "truck",
+    amount: 11,
+    price: 27110,
+    onSale: true,
+  },
+  {
+    make: "Ford",
+    model: "Fusion",
+    type: "sedan",
+    amount: 13,
+    price: 22120,
+    onSale: true,
+  },
+  {
+    make: "Ford",
+    model: "Explorer",
+    type: "suv",
+    amount: 6,
+    price: 31660,
+    onSale: false,
+  },
+];
+
+const getByModel1 = (arr, model) => {
+  return arr.find((car) => car.model === model);
+};
+
+console.log(getByModel1(cars3, "Explorer"));
+
+
+console.log('//////////// - chain functions - ///////////////////////');
+
+/**
+ * Нехай функція getModelsOnSale повертає масив моделей автомобілів,
+ * але тільки тих, які зараз на розпродажі.
+ */
+
+const getModelsOnSale = (cars) => {
+    return cars
+        .filter(car => car.onSale)
+        .map(car => car.model)
+}
+
+console.table(getModelsOnSale(cars));
+
+/**
+ * Нехай функція getSortedCarsOnSale повертає масив автомобілів
+ * на розпродажі (Властивість onSale), відсортованих за зростанням ціни.
+ */
+
+const getSortedCarsOnSale = (cars) => {
+    return cars
+        .filter(car => car.onSale)
+        .toSorted((a, b) => a.price - b.price)
+        .map(car => {
+            return {
+                model: car.model,
+                price: car.price
+            }
+        })
+}
+
+console.table(getSortedCarsOnSale(cars))
 
 
 
