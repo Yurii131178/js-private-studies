@@ -875,3 +875,416 @@ console.log(objA1);
 
 //Наприкінці ланцюжка прототипів завжди знаходиться посилання на базовий клас, від якого походить тип даних у ланцюжку. У нашому випадку objB — це об'єкт, тому в кінці ланцюжка буде посилання на клас Object.
 
+console.log('');
+console.log('********************************');
+
+console.log('<<----------КЛАСИ--------->>');
+
+// Класи
+// Оголошення класу
+
+
+
+// Синтаксис літерала об'єкта дозволяє створити один об'єкт. Проте часто є потреба створити багато однотипних об'єктів з однаковим набором властивостей, але різними значеннями й методами для взаємодії з ними. Все це потрібно робити динамічно, під час виконання програми. З цією метою використовують класи.
+
+
+
+// Оголошення класу має такий синтаксис:
+
+
+
+// ключове слово class
+// ім’я класу (у прикладі: User)
+// тіло класу у фігурних дужках
+
+// class User {
+//   // Тіло класу
+// }
+
+
+
+// Класи прийнято називати з великої літери, а в назві відображати тип об'єкта (іменника), що створюється.
+
+
+// А як створити з класу екземпляр?
+
+
+
+// Після того як клас було оголошено, можна створити його екземпляр за допомогою спеціального оператора new, поставивши його перед викликом класу. Результатом виклику new User() буде екземпляр класу User. Він буде містити дані і мати поведінку, що описані у класі.
+
+
+
+class User {
+  // Тіло класу
+}
+
+const mango9 = new User();
+console.log(mango9); // {}
+
+const poly9 = new User();
+console.log(poly9); // {}
+
+
+// Який оператор використовується для створення нового екземпляра класу?
+
+
+// new
+
+// // Точнісінько так! Для створення нового екземпляра класу використовується оператор new.
+
+// // Як створити екземпляр класу Car?
+
+
+// new Car()
+
+// правильний синтаксис створення екземпляра класу Car — це new Car().
+
+
+class User11 {
+  constructor() {
+		console.log("constructor call")
+  }
+}
+
+const mango11 = new User11(); // "constructor call"
+console.log(mango11); // {}
+
+
+console.log('');
+console.log('********************************');
+
+console.log('<<----------Конструктор класу--------->>');
+
+// Конструктор класу
+
+
+
+// Спосіб створення класу залежить від твоєї задачі. У нашому прикладі клас User представляє користувача, тому ми додамо до нього поля для імені та пошти.
+
+// Для ініціалізації екземпляра класу використовується метод constructor.
+// Якщо його не визначити в явному вигляді, то буде створений конструктор за замовчуванням — порожня функція, яка не змінює екземпляр класу.
+
+
+class User12 {
+  // Синтаксис оголошення методу класу
+  constructor() {
+		// ...
+  }
+}
+
+
+
+// Виклик класу з оператором new призводить до створення нового об'єкта й автоматичного виклику методу constructor.
+
+
+class User13 {
+  constructor() {
+		console.log("constructor call")
+  }
+}
+
+const mango13 = new User13(); // "constructor call"
+console.log(mango13); // {}
+
+
+
+// Аргументи, які передаються при виклику new User(), стають значеннями параметрів для методу constructor.
+
+class User14 {
+  constructor(name, email) {
+		console.log(name, email);// "Mango mango@mail.com"
+  }
+}
+
+const mango14 = new User14("Mango", "mango@mail.com"); // "Mango mango@mail.com"
+console.log(mango14); // {}
+
+
+
+// Зверни увагу, що метод constructor викликається в контексті створюваного екземпляра.
+
+class User15 {
+  constructor(name, email) {
+    // Ініціалізація властивостей екземпляра
+    this.name = name;
+    this.email = email;
+  }
+}
+
+const mango15 = new User15("Mango", "mango@mail.com");
+console.log(mango15); // { name: 'Mango', email: 'mango@mail.com' }
+
+const poly15 = new User15("Poly", "poly@mail.com");
+console.log(poly15); // { name: 'Poly', email: 'poly@mail.com' }
+
+// Таким чином, this усередині конструктора посилається на новостворений об'єкт.
+// Це дозволяє надавати кожному об'єкту властивості з однаковими іменами, але різними значеннями.
+// Властивості name та email називаються публічними властивостями, оскільки вони є власними властивостями об'єкта-екземпляра.
+
+// Який метод класу викликається першим при створенні екземпляра?
+
+//     constructor
+  
+// При створенні екземпляра першим викликається метод constructor.
+
+// Що таке this усередині конструктора?
+
+
+// Посилання на новостворений об'єкт
+
+// І це абсолютно правильна відповідь! this усередині конструктора посилається на новостворений об'єкт.
+
+// Що робить метод constructor у класі?
+
+
+// Ініціалізує власні властивості екземпляра класу
+
+// Дуже добре! Тобі вдалося запам’ятати найголовніше з цього розділу. Метод constructor використовується для ініціалізації власних властивостей екземпляра класу.
+
+console.log('');
+console.log('********************************');
+console.log('AUTOCHECK');
+//Додай класу Car метод constructor, який приймає три параметри:
+
+// brand - марка автомобіля
+// model - модель автомобіля
+// price - ціна автомобіля
+// Клас Car повинен створювати об'єкт з одноіменними властивостями brand, model і price, які отримують свої значення з аргументів, переданих при створенні нового екземпляра за допомогою оператора new.
+
+// Оголошений клас Car
+// Клас Car має метод constructor
+// В результаті виклику new Car("Audi", "Q3", 36000) утвориться об'єкт {brand: "Audi", model: "Q3", price: 36000}
+// В результаті виклику new Car("BMW", "X5", 58900) утвориться об'єкт {brand: "BMW", model: "X5", price: 58900}
+// В результаті виклику new Car("Nissan","Murano", 31700) утвориться об'єкт {brand: "Nissan", model: "Murano", price: 31700}
+
+class Car {
+  constructor(brand, model, price){
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+    
+  }
+}
+
+const newCar = new Car();
+
+console.log(new Car("Audi", "Q3", 36000));
+console.log(new Car("BMW", "X5", 58900));
+console.log(new Car("Nissan","Murano", 31700));
+console.log(new Car("Hyundai", "i30", 1000084));
+
+
+console.log('');
+console.log('********************************');
+
+console.log('<<----------Об`єкт параметрів--------->>');
+// Об'єкт параметрів
+
+
+
+// Клас може приймати велику кількість вхідних даних для властивостей майбутнього об'єкта.
+
+// До них також можна застосувати патерн «Об'єкт параметрів», передаючи один об'єкт з логічно іменованими властивостями, замість непов'язаного набору аргументів.
+
+class User16 {
+  constructor(params) {
+    this.name = params.name;
+    this.email = params.email;
+  }
+}
+
+const mango16 = new User16({
+  name: "Mango",
+  email: "mango@mail.com",
+});
+
+console.log(mango16); 
+// { name: "Mango", email: "mango@mail.com" }
+
+
+
+
+console.log('');
+console.log('********************************');
+console.log('AUTOCHECK');
+
+class Car5 {
+  constructor(params) {
+    this.brand = params.brand;
+    this.model = params.model;
+    this.price = params.price;
+  }
+}
+
+console.log(new Car5({ brand: "BMWвуха", model: "X5", price: 67900 }));
+
+console.log('in other way');
+
+
+const myCar = new Car5({
+
+  brand: "jojoba",
+  model: "hu",
+  price: 5,
+});
+
+console.log(myCar);
+
+console.log('==============================================');
+console.log('<<<----Методи класу---->>>');
+//Методи класу
+
+// Для роботи з властивостями майбутнього екземпляра використовуються методи класу.
+// Методи класу — це функції, які будуть доступні екземпляру в його прототипі. Вони оголошуються в довільному порядку після конструктора. На відміну від синтаксису методів об'єкта (вони розділяються комою), методи класу не розділені жодними спеціальними символами.
+
+// Розгляньмо приклад використання методів у класі User.
+class User17 {
+  constructor(params) {
+    this.name = params.name;
+    this.email = params.email;
+  }
+
+  // Метод getEmail
+  getEmail() {
+		// ...
+  }
+
+  // Метод changeEmail
+  changeEmail(newEmail) {
+		// ...
+  }
+}
+
+// Для доступу до властивостей у методах використовується ключове слово this, оскільки методи будуть викликані в контексті об'єкта-екземпляра.
+class User18 {
+  constructor(params) {
+    this.name = params.name;
+    this.email = params.email;
+  }
+
+  getEmail() {
+    return this.email;
+  }
+
+  changeEmail(newEmail) {
+    this.email = newEmail;
+  }
+}
+
+// Після створення екземпляра можна використовувати оголошені методи класу, які будуть звертатися до властивостей об'єкта, що їх викликав.
+
+const mango17 = new User18({ 
+	name: "Mango", 
+	email: "mango@mail.com" 
+});
+
+console.log(mango17.getEmail()); // "mango@mail.com"
+
+mango17.changeEmail("new@mail.com");
+
+console.log(mango17.getEmail()); // "new@mail.com"
+
+// Як правильно звернутися до властивості username класу Customer у його методі?
+
+- this.username
+
+// Правильна відповідь! Правильний спосіб звернутися до властивості username класу Customer у його методі — це this.username. У методі класу this використовується для посилання на поточний об'єкт, тобто на екземпляр класу Customer.
+console.log('');
+console.log('********************************');
+console.log('AUTOCHECK');
+
+//Додай класу Car два методи.
+
+// getPrice() - повертає значення властивості price з об'єкта, який буде його викликати.
+// changePrice(newPrice) - оновлює значення властивості price в об'єкта, який буде його викликати на значення параметра newPrice.
+// В класі Car оголошений метод getPrice
+// Метод getPrice повертає значення властивості price екземпляра класу, який його викликає
+// В класі Car оголошений метод changePrice
+// Метод changePrice змінює значення властивості price екземпляра класу, який його викликає
+
+class Car6 {
+  constructor(params) {
+    this.brand = params.brand;
+    this.model = params.model;
+    this.price = params.price;
+  }
+  getPrice(){
+    return this.price;
+  }
+
+  changePrice(newPrice){
+    this.price = newPrice;
+  }
+}
+const careta = new Car6({ brand: "Toyota", model: "Yaris", price: 20000 });
+console.log(careta.getPrice());  // 20000
+
+careta.changePrice(13000);
+console.log(careta.getPrice());  //13000
+
+
+console.log('******************************************');
+class Car7 {
+  #brand;
+  #model;
+  #price;
+
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.#model = model;
+    this.#price = price;
+  }
+
+  get brand() {
+    return this.#brand;
+  }
+
+  set brand(newBrand) {
+    this.#brand = newBrand;
+  }
+
+  get model() {
+    return this.#model;
+  }
+
+  set model(newModel) {
+    this.#model = newModel;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    this.#price = newPrice;
+  }
+}
+
+const car8 = new Car7({ brand: "Toyota", model: "Camry", price: 30000 });
+
+console.log(car8.brand);
+console.log(car8.model);
+console.log(car8.price); // 30000
+
+
+car8.price = 28000;
+car8.brand = "Hyundai"
+car8.model = "i30"
+
+
+console.log(car8.brand);
+console.log(car8.model);
+console.log(car8.price);
+
+
+class MyClass {
+	static b = 5;
+
+	constructor(value) {
+		this.a = value;
+	}
+}
+
+const instance = new MyClass(10);
+console.log(instance.b);
+console.log(MyClass.b);
