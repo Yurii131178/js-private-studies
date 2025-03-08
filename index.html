@@ -4,13 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./js/module-1.js"></script>
-    <script src="./js/module-2.js"></script>
-    <script src="./js/module-3.js"></script>
-    <script src="./js/module-4.js"></script>
-    <script src="./js/module-5.js"></script>
-    <script src="./js/module-6.js"></script>
-    <script src="./js/module-7.js"></script>
+    <script src="./js/module-1.js" defer></script>
+    <script src="./js/module-2.js" defer></script>
+    <script src="./js/module-3.js" defer></script>
+    <script src="./js/module-4.js" defer></script>
+    <script src="./js/module-5.js" defer></script>
+    <script src="./js/module-6.js" defer></script>
+    <script src="./js/module-7.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <!-- button -->
+    <button type="button" id="magic-button" class="js-magic-btn">
+      MAGIC_BUTTON
+    </button>
+    <!-- ul -->
+    <ul class="nav-list">
+      <li class="list-item">Jojoba</li>
+
+      <li class="list-item">Oooops</li>
+
+      <li class="list-item">Ooolala</li>
+    </ul>
+
+    <hr />
+    <!-- властивості елемента -->
+
+    <section class="hero">
+      <h1 class="hero_title">What a wonderful world</h1>
+
+      <img
+        class="hero_image"
+        src="https://fastly.picsum.photos/id/716/500/500.jpg?hmac=t_YSPYS_yDjE9YSxHrDW9PrxvGExSkJg-MOkKntmQFU"
+        alt="sea"
+        width="300"
+      />
+    </section>
+    <hr />
+
+    <input type="text" class="js-input" />
+    <hr />
+    <div class="actions">
+      <button type="button" data-action="add">Add</button>
+      <button type="button" data-action="remove">Remove</button>
+      <button type="button" data-action="edit">Edit</button>
+    </div>
+
+    <hr />
+
+    <ul class="site-nav">
+      <li class="site-nav__item">
+        <a href="/about" class="site-nav__link">About</a>
+      </li>
+      <li class="site-nav__item">
+        <a href="/portfolio" class="site-nav__link">Portfolio</a>
+      </li>
+      <li class="site-nav__item">
+        <a href="/contact" class="site-nav__link">Contacts</a>
+      </li>
+    </ul>
+
+    <script src="./script.js"></script>
+  </body>
 </html>
