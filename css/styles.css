@@ -70,3 +70,7 @@ body {
   display: inline-flex;
   margin-left: 40px;
 }
+
+.nav-list {
+  color: blue;
+}

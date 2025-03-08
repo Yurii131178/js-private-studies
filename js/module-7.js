@@ -165,3 +165,111 @@ console.log(link.classList);
 link.classList.toggle("trololo"); // перемикач // якщо немає - додає  
 console.log(link.classList);
     
+// replace//
+
+link.classList.replace("trololo", "tratata"); // приймає два аргументи: той що треба змінити і той, який треба підставити
+console.log(link.classList); // DOMTokenList(2) ['link', 'tratata', value: 'link tratata']
+
+
+//==============СТВОРЕННЯ ЕЛЕМЕНТІВ===================//
+
+const title = document.createElement("h1");
+
+title.classList.add("page-title");
+title.textContent = "HAPPY NEW YEAR!";
+console.log(title);
+
+// поки що наш елемент живе тільки тут (JS), ЯК ЙОГО ПЕРЕНЕСТИ НА СТОРІНКУ???
+
+// МЕТОДИ
+
+document.body.append(title); // помістив наш елемент в body після всіх дочірніх елементів 
+document.body.prepend(title); // помістив наш елемент в body перед всіма дочірніми елементами
+
+// створимо зображення//
+
+const imgElem = document.createElement("img");
+
+imgElem.src = "../img/_MG_3530.JPG";
+
+imgElem.alt = "latoala";
+imgElem.width = 350;
+
+
+console.log(imgElem);
+
+const actionsEl = document.querySelector(".actions");
+
+actionsEl.append(imgElem, title); // МЕТОД append/prepend МОЖЕ ПЕРЕДАВАТИ КІЛЬКА СТВОРЕНИХ ЕЛЕМЕНТІВ ЧЕРЕЗ КОМУ. ВАЖЛИВО!!! тег title було доано в тег div але видалено в body!!! ЕЛЕМЕНТ МОЖНА ДОДАТИ ЛИШЕ В ОДНОМУ ЯКОМУСЬ МІСЦІ НА СТОРІНЦІ!!!
+
+//===========створимо і додамо новий пункт меню================//
+
+
+const navElem = document.querySelector(".site-nav");// переносимо з консолі в список
+
+const navEl = document.createElement("li"); // створюємо тег <li>
+
+navEl.classList.add("site-nav__item"); // додаємо клас
+
+console.log(navEl); // виводимо в консоль
+
+const navLinkEl = document.createElement("a"); // створюємо тег <a>
+
+navLinkEl.classList.add("site-nav__link"); // додаємо клас
+
+navLinkEl.href = "/profile"; // додаємо атрибут <href>
+
+navLinkEl.textContent = "Profile"; // додаємо зміст (наш текст)
+
+console.log(navLinkEl);   
+
+// маємо готову лішку і посилання. Тепер треба <a> запхати в <li> //
+
+navEl.append(navLinkEl); // звертаємось до тегу li і вкладаємо(append) <a> в <li> .Перетягуємо на самий верх код для переносу в список
+
+
+// console.log(navEl);// в консолі бачимb дішку з вкладеним тегом а
+
+navElem.append(navEl);
+
+//=============================================//
+
+// Властивість innerHTML
+// зчитування
+// запис
+
+const titleElem = document.querySelector(".hero_title");
+
+console.log(titleElem);
+
+titleElem.innerHTML = "WHAT YA GONNA DO?";   //на відміну від textContent(який приймає тільки рядок і так і передає), innerHTML розрізняє теги і вміє їх читати/розпарсювати і перетворювати в звичайні HTML теги
+
+
+// titleElem.innerHTML = ""; //видаляє весь зміст елемента, який викликав цю вдастивість, звернувся до цієї властивості.
+
+// innerHTML витирає все, перезаписує
+
+// ==== insertAdjacentHTML ===== //
+
+// Цей метод чітко вказує на місце де саме ми додаємо певний елемент. саме додати!!!
+
+titleElem.insertAdjacentHTML("beforeend", ` <a href="">JOJOBA</a>`); // приймає два аргументи: 1.місце, куди хочемо поставити якусб розмітку"beforebegin","afterbegin","beforeend", "afterend"; 2. те що михочемо додати.
+
+
+// метод додасть туди, куди скажемо, і те що ми йому скажемою (рядочок з розміткою)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
