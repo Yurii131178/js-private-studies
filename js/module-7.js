@@ -133,15 +133,35 @@ console.log(actions[1].dataset); // так перевіряємо, які у е�
 ////
 
 
-const currentPageUrl = "/contact"
-const linkEl = document.querySelector(`.site-nav__link[href="${currentPageUrl}"]`);
 
-console.log(linkEl);
+const itemElem = document.querySelector(".list-item");
+
+console.log(itemElem);
 
 // як додати до нашого елемента "class"?
 
-linkEl.classList.add("site-nav__link--current"); //  додаємо властиівості до елемента "classList" і "add", як аргумент додаємо сюди назву "class", який хочемо додати до елемента. УВАГА!!! ми у же у властивості класс, тому ми не додаємо крапку при 
+itemElem.classList.add("blue"); //  додаємо властиівості до елемента "classList" і "add", як аргумент додаємо сюди назву "class", який хочемо додати до елемента. УВАГА!!! ми у же у властивості класс, тому ми не додаємо крапку при
+// itemElem.classList.remove("blue"); // видаляємо
 
 
+const link = document.querySelector(".link");
+console.log(link.classList); 
+// ["link", "is-active", length: 2, value: "link is-active"]
 
+link.classList.add("blue");
+console.log(link.classList);  // додаємо
+
+link.classList.remove("is-active"); // забираємо
+console.log(link.classList); 
+
+console.log(link.classList.contains("blue")); // перевірка наявності класу // true
+console.log(link.classList.contains("link")); // перевірка наявності класу // true
+console.log(link.classList.contains("is-active")); // перевірка наявності класу // false
+
+// toggle//
+
+link.classList.toggle("blue"); // перемикач // якщо клас є - видаляє
+console.log(link.classList); 
+link.classList.toggle("trololo"); // перемикач // якщо немає - додає  
+console.log(link.classList);
     
